@@ -10,36 +10,44 @@ class App extends React.Component {
     super();
     this.state = {
       list: [],
-      input: ''
     }
   }
 
-  handleChange = (e) => {
-    this.setState({input: e.target.value});
-  }
-
-  handleSubmit = (e) => {
-    e.preventDefault();
+  addTask = (taskName) => {
     this.setState({
       list: [...this.state.list, {
-        value: this.state.input, 
-        done: false, 
+        task: taskName,
+        completed: false,
         id: Date.now()
-      }],
-      input: ''
-    });
+      }]
+    })
   }
 
-  handleDone = (e) => {
-    console.log(e.target.id);
+  toggleDone = (clickedItemId) => {
+    this.setState({
+      list: this.state.list.map(task => {
+        if(task.id === clickedItemId){
+          return {
+            ...task, 
+            completed: !task.completed
+          }
+        }else{
+          return task;
+        }
+      })
+    })
   }
 
   render() {
     return (
       <div>
         <h2>My Todo List</h2>
-        <TodoList list={this.state.list} handleDone={this.handleDone}/>
-        <TodoForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} input={this.state.input}/>
+        <TodoList list={this.state.list} toggleDone={this.toggleDone}/>
+        <TodoForm 
+          addTask={this.addTask}
+          handleClearCompleted={this.handleClearCompleted} 
+          input={this.state.input}
+        />
       </div>
     );
   }

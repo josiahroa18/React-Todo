@@ -1,13 +1,15 @@
 import React from 'react';
 
-class Todo extends React.Component{
-    render(){
-        return(
-            <div>
-                <p onClick={this.props.handleDone} id={this.props.item.id}>{this.props.item.value}</p>
-            </div>
-        );
-    }
+function Todo(props){
+    return(
+        <div>
+            <p 
+                onClick={() => props.toggleDone(props.item.id)} 
+                id={props.item.id}
+                style={props.item.completed ? {textDecoration: 'line-through'} : {textDecoration: 'none'}}
+            >{props.item.task} </p>
+        </div>
+    );
 }
 
 export default Todo;
