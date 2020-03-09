@@ -1,4 +1,5 @@
 import React from 'react';
+import '../App.css'
 
 class TodoForm extends React.Component{
     constructor(){

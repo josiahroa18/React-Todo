@@ -1,0 +1,53 @@
+.app{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.app h2{
+    font-family: sans-serif;
+}
+
+.todo-card{
+    width: 200px;
+    background-color: dodgerblue;
+    border-radius: 5px;
+}
+
+.completed{
+    width: 200px;
+    background-color: lightblue;
+    border-radius: 5px;
+}
+
+.todo-card p, .completed p{
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-family: sans-serif;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+form button{
+    margin: 10px 4px;
+}
+
+form input{
+    height: 30px;
+    outline: none;
+}
+
+button{
+    padding: 10px;
+    background-color: palevioletred;
+    color: white;
+    bordeR: none;
+    cursor: pointer;
+    outline: none;
+}
