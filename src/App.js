@@ -11,6 +11,16 @@ class App extends React.Component {
     }
   }
 
+  componentDidMount = () => {
+    this.setState({
+      list: JSON.parse(localStorage.getItem('list'))
+    })
+  }
+
+  componentDidUpdate = () => {
+    window.localStorage.setItem('list', JSON.stringify(this.state.list));
+  }
+
   addTask = taskName => {
     this.setState({
       list: [...this.state.list, {
