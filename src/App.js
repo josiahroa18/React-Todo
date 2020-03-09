@@ -3,9 +3,6 @@ import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
 
 class App extends React.Component {
-  // you will need a place to store your state in this component.
-  // design `App` to be the parent component of your application.
-  // this component is going to take care of state, and any change handlers you need to work with your state
   constructor(){
     super();
     this.state = {
@@ -13,7 +10,7 @@ class App extends React.Component {
     }
   }
 
-  addTask = (taskName) => {
+  addTask = taskName => {
     this.setState({
       list: [...this.state.list, {
         task: taskName,
@@ -23,7 +20,7 @@ class App extends React.Component {
     })
   }
 
-  toggleDone = (clickedItemId) => {
+  toggleDone = clickedItemId => {
     this.setState({
       list: this.state.list.map(task => {
         if(task.id === clickedItemId){
@@ -38,6 +35,15 @@ class App extends React.Component {
     })
   }
 
+  clearCompleted = e => {
+    e.preventDefault();
+    this.setState({
+      list: this.state.list.filter(item => {
+        return !item.completed;
+      })
+    })
+  }
+
   render() {
     return (
       <div>
@@ -48,6 +54,7 @@ class App extends React.Component {
           handleClearCompleted={this.handleClearCompleted} 
           input={this.state.input}
         />
+        <button onClick={this.clearCompleted}>Clear Completed</button>
       </div>
     );
   }
